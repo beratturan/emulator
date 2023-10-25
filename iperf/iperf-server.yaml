@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: iperf-server
+spec:
+  containers:
+  - name: iperf-server
+    image: networkstatic/iperf3
+    command: ["iperf3", "-s"]
+    imagePullPolicy: IfNotPresent
