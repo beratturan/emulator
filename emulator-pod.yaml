@@ -35,10 +35,26 @@ spec:
             name: stress-ng-config
             key: DURATION_IN_SECONDS
 
+    resources:
+      limits: 
+        cpu: "7"
+        memory: "9Gi"
+
+
+  - name: gpu-container
+    image: emulator-gpu:1.0
+    resources:
+      limits:
+        nvidia.com/gpu: 1
+    env:
+    - name: MATRIX_SIZE
+      value: "1000"
+
+
   - name: iperf-client
     image: networkstatic/iperf3
     command: ["iperf3"]
-    args: ["-c", "10.1.0.14", "-p", "5201", "-t", "$(DURATION_IN_SECONDS)", "-b", "$(BANDWIDTH)", "-i", "$(CLIENT_COUNT)"]
+    args: ["-c", "10.101.134.4", "-p", "5201", "-t", "$(DURATION_IN_SECONDS)", "-b", "$(BANDWIDTH)", "-i", "$(CLIENT_COUNT)"]
     env:
       - name: DURATION_IN_SECONDS
         valueFrom:

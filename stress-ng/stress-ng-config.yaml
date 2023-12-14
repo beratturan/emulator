@@ -3,9 +3,9 @@ kind: ConfigMap
 metadata:
   name: stress-ng-config
 data:
-  CPU_WORKERS: "1"
-  CPU_LOAD: "50"
+  CPU_WORKERS: "2"
+  CPU_LOAD: "100"
   VM_WORKERS: "1"
-  VM_BYTES: "1024M"
+  VM_BYTES: "4096M"
   DURATION_IN_SECONDS: "60"
 
